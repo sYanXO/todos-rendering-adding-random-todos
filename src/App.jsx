@@ -1,29 +1,21 @@
 import { useState } from "react";
 
 function App() {
-  const [todos,setTodos] = useState([{
-    title:"go to gym",
-    description: " go to gym at 6pm",
-    completed: false
-  },{
-    title:"study dsa",
-    description: " study dsa from 9pm to 12",
-    completed: true
-  },{
-    title:"study CN",
-    description: " study CN from 12 to 2",
-    completed: false
-  },{
-    title:"study control system",
-    description: " study CN from 2 to 5",
-    completed: true
-  }]);
+  const [todos,setTodos] = useState([]);
+  console.log("app got called")
   function addTodo() {
-    setTodos([...todos,{ // ... spreads all the values from the todo array and adds {....} inside the todo array
+    console.log("addtodo got called")
+    let newTodos=[];
+    for(let i = 0 ; i < todos.length ; i++){
+      newTodos.push(todos[i])
+    }
+    newTodos.push({
       title:"new todo",
       description:"new todo description",
-      completed:false
-    }])
+      
+    })
+    setTodos(newTodos)
+    
   }
   return (
     <div>
@@ -32,11 +24,29 @@ function App() {
       {todos.map(function(todo){
         return <Todo title={todo.title} description={todo.description}></Todo>
       })}
+      
+      
     </div>
   )
 }
-
+/*function NewTodos(props){
+  return <div>
+    {todos.map(function(todo){
+        return <Todo title={todo.title} description={todo.description}></Todo>
+      })}
+  </div>
+}*/
+function DarkNewTodos(props){
+  return <div>
+    {props.todos.map(function(todo){
+        return <div style={{background:"black",color:"white"}}> 
+        <Todo title={todo.title} description={todo.description}></Todo>
+        </div>
+      })}
+  </div>
+}
 function Todo(props){
+  console.log("todo component got called")
   return <div>
     <h1>{props.title}</h1>
     <h2>{props.description}</h2>
