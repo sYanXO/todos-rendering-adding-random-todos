@@ -13,6 +13,10 @@ function App() {
     title:"study CN",
     description: " study CN from 12 to 2",
     completed: false
+  },{
+    title:"study control system",
+    description: " study CN from 2 to 5",
+    completed: true
   }]);
   function addTodo() {
     setTodos([...todos,{ // ... spreads all the values from the todo array and adds {....} inside the todo array
